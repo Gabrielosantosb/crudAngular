@@ -1,0 +1,24 @@
+<h2 class="create-user-heading">Criar usuário</h2>
+
+<form class="form-container">
+  <label class="form-label">Nome:
+    <input class="form-input" placeholder="Insira o nome" required [(ngModel)]="request.name">
+  </label>
+
+  <label class="form-label">Profissão:
+    <input class="form-input" placeholder="Insira a profissão" required [(ngModel)]="request.job">
+  </label>
+
+  <button class="form-button" (click)="save()">Gravar</button>
+</form>
+
+<br><br>
+
+<div>
+  <label>Nome: {{}}</label>
+  <label></label>
+  <label></label>
+  <label></label>
+
+
+</div>

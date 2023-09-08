@@ -1,0 +1,17 @@
+<h1>Usuários</h1>
+
+<table>
+  <thead>
+    <td>Nome</td>
+    <td>Sobrenome</td>
+  </thead>
+
+  <tbody >
+  <ng-container *ngIf="responseUsers">
+    <tr *ngFor="let user of responseUsers.data">
+      <td>{{ user.first_name }}</td>
+      <td>{{ user.last_name }}</td>
+    </tr>
+  </ng-container>
+  </tbody>
+</table>
