@@ -2,23 +2,23 @@
 
 <form class="form-container">
   <label class="form-label">Nome:
-    <input class="form-input" placeholder="Insira o nome" required [(ngModel)]="request.name">
+    <input class="form-input" placeholder="Insira o nome" required [(ngModel)]="request.name" name="first">
   </label>
 
   <label class="form-label">Profissão:
-    <input class="form-input" placeholder="Insira a profissão" required [(ngModel)]="request.job">
+    <input class="form-input" placeholder="Insira a profissão" required [(ngModel)]="request.job" name="job">
   </label>
 
   <button class="form-button" (click)="save()">Gravar</button>
 </form>
 
-<br><br>
+<br>
+<br>
 
-<div>
-  <label>Nome: {{}}</label>
-  <label></label>
-  <label></label>
-  <label></label>
-
-
+<div *ngIf="showResponse">
+  <h3>Criado com sucesso</h3>
+  <label>Nome:{{request.name}} </label><br>
+  <label>Profissão:{{request.job}}</label><br>
+  <label>Id: {{response.id}}</label><br>
+  <label>CreatedAt: {{response.createdAt}}</label>
 </div>

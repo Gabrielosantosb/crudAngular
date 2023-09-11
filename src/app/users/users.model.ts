@@ -12,6 +12,10 @@ export interface Support {
 }
 
 export interface ResponseUsers {
+  name: string;
+  job: string;
+  id: string;
+  createdAt: string;
   page: number;
   per_page: number;
   total: number;
@@ -30,4 +34,22 @@ export interface ResponseCreate {
   job: string;
   id: string;
   createdAt: string;
+}
+// -------------------GET Single User-----------------------------------------
+export interface Root {
+  data: Data
+  support: Support
+}
+
+export interface Data {
+  id: number
+  email: string
+  first_name: string
+  last_name: string
+  avatar: string
+}
+
+export interface Support {
+  url: string
+  text: string
 }

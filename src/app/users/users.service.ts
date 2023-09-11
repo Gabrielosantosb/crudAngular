@@ -13,7 +13,9 @@ export class UsersService {
   getUsers(): Observable<ResponseUsers>{
     return this.http.get<ResponseUsers>(this.url);
   }
-
+  getUser(id: string): Observable<ResponseUsers>{
+    return this.http.get<ResponseUsers>(this.url);
+  }
   createUser(request: RequestCreate):Observable<ResponseUsers>{
     return this.http.post<ResponseUsers>(this.url, request)
   }
