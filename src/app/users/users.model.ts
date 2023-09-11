@@ -11,6 +11,8 @@ export interface Support {
   text: string;
 }
 
+
+
 export interface ResponseUsers {
   name: string;
   job: string;
@@ -24,6 +26,7 @@ export interface ResponseUsers {
   support: Support;
 }
 
+// ---------------------------Modelos Create---------------------------
 export interface RequestCreate {
   name: string;
   job: string;
@@ -36,20 +39,21 @@ export interface ResponseCreate {
   createdAt: string;
 }
 // -------------------GET Single User-----------------------------------------
-export interface Root {
-  data: Data
+export interface ResponseUser {
+  data: User
   support: Support
 }
 
-export interface Data {
-  id: number
-  email: string
-  first_name: string
-  last_name: string
-  avatar: string
+// ---------------------------Modelos Update---------------------------
+
+export interface RequestUpdate {
+  name: string;
+  job: string;
 }
 
-export interface Support {
-  url: string
-  text: string
+export interface ResponseUpdate {
+  name: string;
+  job: string;
+  updateAt: string;
 }
+

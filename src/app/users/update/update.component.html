@@ -1,0 +1,13 @@
+<div *ngIf="request">
+  <form class="form-container" required>
+    <label class="form-label">Nome:
+      <input class="form-input" placeholder="Insira o nome" required [(ngModel)]="request.name" name="first">
+    </label>
+    <label class="form-label">Profissão:
+      <input class="form-input" placeholder="Insira a profissão" required [(ngModel)]="request.job" name="job">
+    </label>
+    <p>Id: {{id}}</p>
+    <button class="form-button" (click)="update()">Atualizar</button>
+
+  </form>
+</div>
