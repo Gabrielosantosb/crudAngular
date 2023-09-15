@@ -23,16 +23,16 @@ export class UpdateComponent implements OnInit {
     })
   }
 
-
-  ngOnInit() {
+  ngOnInit(){
     this.id = this.route.snapshot.paramMap.get('id')
-    this.userService.getUser(this.id).subscribe(res => {
+    this.userService.getUser(this.id).subscribe(res=>{
       this.request = {
-        name: `${res.data.first_name} ${res.data.last_name}`,
-        // O job não vem neste get
-        job: ''
+        name: `${res.data.name}`
       }
     })
+
   }
+
+
 
 }

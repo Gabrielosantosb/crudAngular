@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { RequestCreate, ResponseCreate } from "../users.model";
+import {RequestCreate, ResponseCreate, ResponseUsers} from "../users.model";
 import { UsersService } from "../users.service";
+import {Observable} from "rxjs";
+import {HttpClient} from "@angular/common/http";
 
 @Component({
   selector: 'app-create-user',
@@ -10,28 +12,28 @@ import { UsersService } from "../users.service";
 export class CreateUserComponent implements OnInit {
   request: RequestCreate = {
     name: '',
-    job: '',
+    description: '',
   }
 
-  constructor(private userService: UsersService) {}
+  constructor(private userService: UsersService, http: HttpClient) {}
 
   ngOnInit() {}
 
   response: ResponseCreate = {
     name: '',
-    job: '',
+    description: '',
     id: '',
-    createdAt: ''
-
   }
+
 
 
   showResponse = false;
   save() {
     this.userService.createUser(this.request).subscribe(res => {
       this.response = res;
-      console.log(this.response);
       this.showResponse = true
+      console.log(this.response);
     })
+
   }
 }
