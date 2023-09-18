@@ -7,12 +7,12 @@
   </thead>
 
   <tbody>
-  <ng-container *ngIf="responseUsers">
-    <tr *ngFor="let user of responseUsers?.data">
+  <ng-container *ngIf="data">
+    <tr *ngFor="let user of data">
       <td>{{ user.name }}</td>
       <td>
         <a routerLink="/users/update/{{user.id}}">EDITAR</a> ||
-        <a routerLink="/users/delete/{{user.id}}"> DELETAR</a>
+        <a routerLink="/users/delete/{{user.id}}}">DELETAR</a>
       </td>
     </tr>
   </ng-container>

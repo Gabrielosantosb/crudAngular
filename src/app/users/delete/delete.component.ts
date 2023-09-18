@@ -10,10 +10,13 @@ import {User} from "../users.model";
 })
 export class DeleteComponent implements OnInit {
 
-  id: string | any
-  user: User | any
+  id: string =  this.route.snapshot.paramMap.get('id') ?? '';
+  user: User[] | any
+
+
 
   constructor(private userService: UsersService, private route: ActivatedRoute, private _route :Router) {
+    console.log( this.route.snapshot.paramMap.get('id'))
   }
 
   delete() {
@@ -27,10 +30,8 @@ export class DeleteComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.id = this.route.snapshot.paramMap.get('id')
-    this.userService.getUser(this.id).subscribe(res => {
-      this.user = res.data
 
-    })
   }
+
+  // protected readonly name = name;
 }

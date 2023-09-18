@@ -5,7 +5,7 @@
   <label class="form-label">Nome:
     <input class="form-input" placeholder="Insira o nome" required [(ngModel)]="request.name" name="first">
   </label>
-  <label class="form-label">Profissão:
+  <label class="form-label">Descrição:
     <input class="form-input" placeholder="Insira a profissão" required [(ngModel)]="request.description" name="job">
   </label>
   <button class="form-button" (click)="save()">Gravar</button>
@@ -14,9 +14,6 @@
 <br>
 <br>
 
-<div *ngIf="showResponse">
-  <h3>Criado com sucesso!!</h3>
-  <label>Nome:{{request.name}} </label><br>
-  <label>Descrição:{{request.description}}</label><br>
-  <label>Id: {{response.id}}</label><br>
-</div>
+<!--<div *ngIf="showResponse">-->
+<!--  <h3>Criado com sucesso!!</h3>-->
+<!--</div>-->

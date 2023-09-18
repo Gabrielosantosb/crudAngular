@@ -1,44 +1,31 @@
-import {Component, OnInit} from '@angular/core';
-import {UsersService} from "./users.service";
-import {ResponseUser, ResponseUsers, User} from "./users.model";
+import {Component, OnDestroy, OnInit} from '@angular/core';
+import {UsersService} from './users.service';
+import { User} from './users.model';
+import {Subscription} from "rxjs";
 
 @Component({
   selector: 'app-users',
   templateUrl: './users.component.html',
-  styleUrls: ['./users.component.css']
+  styleUrls: ['./users.component.css'],
 })
-export class UsersComponent implements OnInit {
-  responseUsers: ResponseUsers | undefined = undefined;
-  users: User |undefined = undefined
-  // responseUsers: ResponseUser | undefined = undefined;
-
+export class UsersComponent implements OnInit, OnDestroy {
+  data: User[] = [];
+  _user$ =  this.userService.getUsers();
+  private userSub: Subscription = new Subscription()
 
   constructor(private userService: UsersService) {
   }
 
-
   ngOnInit() {
-    this.userService.getUsers().subscribe(
-      res => {
-        console.log('Resposta da API:', res.data);
-        this.responseUsers = res;
+    this.userSub = this._user$.subscribe((res: User[])=>{
+      this.data = res;
+    });
 
-      },
-      error => {
-        console.error('Erro ao obter dados:', error);
-      }
-    );
+
   }
 
-  // ngOnInit() {
-  //   this.userService.getUsers().subscribe(
-  //     res => {
-  //       this.responseUsers = res;
-  //       console.log('Data: ', this.responseUsers);
-  //     },
-  //     error => {
-  //       console.error('Erro ao obter dados:', error);
-  //     }
-//     );
-//   }
+  ngOnDestroy(): void {
+    if (this.userSub)
+      this.userSub.unsubscribe()
+  }
 }

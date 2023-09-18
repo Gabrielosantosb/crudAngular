@@ -25,14 +25,12 @@ export class CreateUserComponent implements OnInit {
     id: '',
   }
 
-
-
   showResponse = false;
   save() {
     this.userService.createUser(this.request).subscribe(res => {
-      this.response = res;
       this.showResponse = true
       console.log(this.response);
+      alert("Usuário criado")
     })
 
   }
