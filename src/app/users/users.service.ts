@@ -43,7 +43,7 @@ export class UsersService {
 
   deleteUser(id: string): Observable<any> {
     console.log('Chamou o método deleteUser()');
-    const _url = `"http://localhost:8080/api/tutorials/${id}`
+    const _url = `${this.url}/${id}`
     return this.http.delete<any>(_url);
   }
 }

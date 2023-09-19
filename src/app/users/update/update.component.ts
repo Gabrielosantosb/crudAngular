@@ -29,6 +29,7 @@ export class UpdateComponent implements OnInit {
     this.userService.getUser(this.id).subscribe(res=>{
       this.request = {
         name: `${res}`
+
       }
     })
 

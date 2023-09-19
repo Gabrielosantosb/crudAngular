@@ -1,20 +1,28 @@
-<h1>Usuários</h1>
 
+<h1>Usuários</h1>
 <table>
   <thead>
-  <td>Nome</td>
-  <td>Descrição</td>
+  <tr>
+    <th>Nome</th>
+    <th>Descrição</th>
+    <th>Ações</th>
+  </tr>
   </thead>
-
   <tbody>
-  <ng-container *ngIf="data">
-    <tr *ngFor="let user of data">
-      <td>{{ user.name }}</td>
-      <td>
-        <a routerLink="/users/update/{{user.id}}">EDITAR</a> ||
-        <a routerLink="/users/delete/{{user.id}}}">DELETAR</a>
-      </td>
-    </tr>
+  <ng-container *ngIf="data.length < 1">
+    <h1>Adicione o primeiro usuário!</h1>
+
   </ng-container>
+  <tr *ngFor="let user of data">
+    <td>{{user.name}}</td>
+    <td>{{user.description}}</td>
+    <td>
+      <a routerLink="/users/update/{{user.id}}">EDITAR</a> ||
+      <a routerLink="/users/delete/{{user.id}}">DELETAR</a>
+    </td>
+
+  </tr>
+
+
   </tbody>
 </table>
