@@ -1,7 +1,7 @@
-import {Component, OnInit} from '@angular/core';
-import {UsersService} from "../users.service";
-import {ActivatedRoute} from "@angular/router";
-import {RequestUpdate, User} from "../users.model";
+import { Component, OnInit } from '@angular/core';
+import { UsersService } from '../users.service';
+import { ActivatedRoute, Router } from '@angular/router';
+import { User } from '../users.model';
 
 @Component({
   selector: 'app-update',
@@ -10,31 +10,31 @@ import {RequestUpdate, User} from "../users.model";
 })
 export class UpdateComponent implements OnInit {
 
+  id: string = this.route.snapshot.paramMap.get('id') ?? '';
+  user: User = {
+    id: '',
+    name: '',
+    description: '',
+    published: false
+  };
 
-  id: string | any
-  request: RequestUpdate | any
-  user: User[] |any
-
-  constructor(private userService: UsersService, private route: ActivatedRoute) {
-  }
+  constructor(private userService: UsersService, private route: ActivatedRoute, private router: Router) { }
 
   update() {
-    this.userService.updateUser(this.id, this.request).subscribe(res => {
-      alert('Usuário atualizado')
-    })
+    this.userService.updateUser(this.id, this.user).subscribe(res => {
+      alert('Usuário atualizado');
+      this.router.navigate(['users']);
+    });
   }
 
-  ngOnInit(){
-    this.id = this.route.snapshot.paramMap.get('id')
-    this.userService.getUser(this.id).subscribe(res=>{
-      this.request = {
-        name: `${res}`
-
-      }
-    })
-
+  ngOnInit() {
+    this.userService.getUser(this.id).subscribe(res => {
+      this.user = {
+        id: this.id,
+        name: res.name || '',
+        description: res.description || '',
+        published: true
+      };
+    });
   }
-
-
-
 }

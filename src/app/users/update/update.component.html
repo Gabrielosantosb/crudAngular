@@ -1,13 +1,12 @@
-<div *ngIf="request">
-  <form class="form-container" required>
+<div>
+  <form class="form-container">
     <label class="form-label">Nome:
-      <input class="form-input" placeholder="Insira o nome" required [(ngModel)]="request.name" name="first">
+      <input class="form-input" placeholder="Insira o nome" [(ngModel)]="user.name" [ngModelOptions]="{ standalone: true }">
     </label>
-    <label class="form-label">Profissão:
-      <input class="form-input" placeholder="Insira a profissão" required [(ngModel)]="request.job" name="job">
+    <label class="form-label">Descrição:
+      <input class="form-input" placeholder="Insira a profissão" [(ngModel)]="user.description" [ngModelOptions]="{ standalone: true }">
     </label>
-    <p>Id: {{id}}</p>
-    <button class="form-button" (click)="update()">Atualizar</button>
 
+    <button class="form-button" (click)="update()">Atualizar</button>
   </form>
 </div>

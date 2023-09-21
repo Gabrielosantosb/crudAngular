@@ -34,6 +34,7 @@
 
 /* Estilos para o botão do formulário */
 .form-button {
+  margin-right: 10px;
   background-color: #007bff;
   color: white;
   padding: 10px 20px;

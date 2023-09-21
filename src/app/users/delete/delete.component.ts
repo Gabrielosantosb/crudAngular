@@ -1,7 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {UsersService} from "../users.service";
 import {ActivatedRoute, Router} from "@angular/router";
-import {User} from "../users.model";
+import {RequestUpdate, User} from "../users.model";
 
 @Component({
   selector: 'app-delete',
@@ -12,12 +12,15 @@ export class DeleteComponent implements OnInit {
 
 
   id: string =  this.route.snapshot.paramMap.get('id') ?? '';
-  user: User[] | any
-
-
+  name: string = '';
+  user: User = {
+    id:'',
+    name: '',
+    description: '',
+    published: false
+  }
 
   constructor(private userService: UsersService, private route: ActivatedRoute, private _route :Router) {
-    console.log( 'Aqui o id' + this.route.snapshot.paramMap.get('id'))
   }
 
   delete() {
@@ -31,7 +34,9 @@ export class DeleteComponent implements OnInit {
   }
 
   ngOnInit() {
-
+    this.userService.getUser(this.id).subscribe((res) =>{
+      this.user = res;
+    });
   }
 
   // protected readonly name = name;

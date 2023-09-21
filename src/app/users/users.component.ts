@@ -12,12 +12,12 @@ export class UsersComponent implements OnInit, OnDestroy {
   data: User[] = [];
   _user$ =  this.userService.getUsers();
   private userSub: Subscription = new Subscription()
-
   constructor(private userService: UsersService) {
   }
 
   ngOnInit() {
     this.userSub = this._user$.subscribe((res: User[])=>{
+      // console.log('Res:', res)
       this.data = res;
     });
 

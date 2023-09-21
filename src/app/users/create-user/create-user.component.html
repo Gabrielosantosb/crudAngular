@@ -3,10 +3,10 @@
 
 <form class="form-container">
   <label class="form-label">Nome:
-    <input class="form-input" placeholder="Insira o nome" required [(ngModel)]="request.name" name="first">
+    <input class="form-input" placeholder="Insira o nome" required [(ngModel)]="user.name" name="first">
   </label>
   <label class="form-label">Descrição:
-    <input class="form-input" placeholder="Insira a profissão" required [(ngModel)]="request.description" name="job">
+    <input class="form-input" placeholder="Insira a profissão" required [(ngModel)]="user.description" name="job">
   </label>
   <button class="form-button" (click)="save()">Gravar</button>
 </form>
