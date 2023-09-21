@@ -1,6 +1,6 @@
 import {Injectable, } from '@angular/core';
 import {Observable, tap, map, of, filter, find, reduce, take, catchError} from "rxjs";
-import {RequestCreate, RequestUpdate, ResponseUpdate,   User} from "./users.model";
+import {User} from "./users.model";
 import {HttpClient} from "@angular/common/http";
 
 @Injectable({
@@ -25,9 +25,9 @@ export class UsersService {
       })
     )
   }
-  createUser(request: RequestCreate): Observable<User[]> {
+  createUser(request: User): Observable<User> {
     console.log('Chamou o método createUser()');
-    return this.http.post<User[]>(this.url, request).pipe(tap(res =>{
+    return this.http.post<User>(this.url, request).pipe(tap(res =>{
       console.log('Resposta POST: ', res)
     }),
       catchError((res)=>{
@@ -37,10 +37,10 @@ export class UsersService {
     )
   }
 
-  updateUser(id: string, request: RequestUpdate): Observable<ResponseUpdate> {
+  updateUser(id: string, request: User): Observable<User> {
     console.log('Chamou o método updateUser()');
     const _url = `${this.url}/${id}`
-    return this.http.put<ResponseUpdate>(_url, request).pipe(tap(
+    return this.http.put<User>(_url, request).pipe(tap(
       res=>{
         console.log('Resposta PUT: ',res)
       }

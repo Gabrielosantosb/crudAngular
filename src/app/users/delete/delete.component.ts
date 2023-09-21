@@ -1,7 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {UsersService} from "../users.service";
 import {ActivatedRoute, Router} from "@angular/router";
-import {RequestUpdate, User} from "../users.model";
+import {User} from "../users.model";
 
 @Component({
   selector: 'app-delete',

@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {RequestCreate, ResponseCreate, ResponseUsers, User} from "../users.model";
+import { User} from "../users.model";
 import {UsersService} from "../users.service";
 import {Observable} from "rxjs";
 import {HttpClient} from "@angular/common/http";
