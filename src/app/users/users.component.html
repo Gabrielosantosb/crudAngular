@@ -1,4 +1,3 @@
-
 <h1>Usuários</h1>
 <table>
   <thead>
@@ -20,9 +19,11 @@
       <a routerLink="/users/update/{{user.id}}">EDITAR</a> ||
       <a routerLink="/users/delete/{{user.id}}">DELETAR</a>
     </td>
-
   </tr>
+  <div *ngIf="data.length >= 2">
 
+    <button (click)="deleteAll()" class="form-button ">Deletar todos</button>
+  </div>
 
   </tbody>
 </table>

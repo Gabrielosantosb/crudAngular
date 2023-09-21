@@ -2,11 +2,12 @@ import {Component, OnDestroy, OnInit} from '@angular/core';
 import {UsersService} from './users.service';
 import { User} from './users.model';
 import {Subscription} from "rxjs";
+import { Location } from '@angular/common';
 
 @Component({
   selector: 'app-users',
   templateUrl: './users.component.html',
-  styleUrls: ['./users.component.css'],
+  styleUrls: ['./users.component.css', '../users/delete/delete.component.css'],
 })
 export class UsersComponent implements OnInit, OnDestroy {
   data: User[] = [];
@@ -15,14 +16,26 @@ export class UsersComponent implements OnInit, OnDestroy {
   constructor(private userService: UsersService) {
   }
 
-  ngOnInit() {
-    this.userSub = this._user$.subscribe((res: User[])=>{
-      // console.log('Res:', res)
-      this.data = res;
-    });
 
+  deleteAll(){
+    this.userService.deleteAllUsers().subscribe()
+    location.reload()
+    alert('Usuários deletados')
 
   }
+  ngOnInit() {
+    try {
+    this.userSub = this._user$.subscribe((res: User[])=>{
+      console.log('Res:', res)
+      this.data = res;
+    });
+    }
+    catch (e) {
+      console.log('Deu erro')
+
+    }
+  }
+
 
   ngOnDestroy(): void {
     if (this.userSub)
