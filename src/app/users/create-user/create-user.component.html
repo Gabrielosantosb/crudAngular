@@ -1,12 +1,19 @@
 <h2 class="create-user-heading">Criar usuário</h2>
 
-
-<form class="form-container">
+<form class="form-container" [formGroup]="userForm" (ngSubmit)="save()">
   <label class="form-label">Nome:
-    <input class="form-input" placeholder="Insira o nome" required [(ngModel)]="user.name" name="first">
+    <input class="form-input" placeholder="Insira o nome" formControlName="name">
+    <div *ngIf="userForm.get('name')?.invalid && userForm.get('name')?.touched">
+      <p class="custom-p" *ngIf="userForm.get('name')?.hasError('required')">Nome é obrigatório.</p>
+      <p class="custom-p" *ngIf="userForm.get('name')?.hasError('minlength')">Nome deve ter pelo menos 3 caracteres.</p>
+    </div>
   </label>
   <label class="form-label">Descrição:
-    <input class="form-input" placeholder="Insira a profissão" required [(ngModel)]="user.description" name="job">
+    <input class="form-input" placeholder="Insira a profissão" formControlName="description">
+    <div *ngIf="userForm.get('description')?.invalid && userForm.get('description')?.touched">
+      <p class="custom-p" *ngIf="userForm.get('description')?.hasError('required')">Descrição é obrigatória.</p>
+      <p class="custom-p" *ngIf="userForm.get('description')?.hasError('minlength')">Descrição deve ter pelo menos 3 caracteres.</p>
+    </div>
   </label>
-  <button class="form-button" (click)="save()">Gravar</button>
+  <button class="form-button" type="submit">Gravar</button>
 </form>

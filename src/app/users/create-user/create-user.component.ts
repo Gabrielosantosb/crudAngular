@@ -4,6 +4,7 @@ import {UsersService} from "../users.service";
 import {Observable} from "rxjs";
 import {HttpClient} from "@angular/common/http";
 import {Router} from "@angular/router";
+import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 
 @Component({
   selector: 'app-create-user',
@@ -11,22 +12,30 @@ import {Router} from "@angular/router";
   styleUrls: ['./create-user.component.css']
 })
 export class CreateUserComponent {
-  user: User = {
-    id: '',
-    name: '',
-    description: '',
-    published: false
-  }
+  userForm: FormGroup;
 
-  constructor(private userService: UsersService, http: HttpClient,private router: Router) {
+  constructor(
+    private userService: UsersService,
+    private fb: FormBuilder,
+    private http: HttpClient,
+    private router: Router
+  ) {
+    this.userForm = this.fb.group({
+      name: ['', [Validators.required, Validators.minLength(3)]],
+      description: ['', [Validators.required, Validators.minLength(3)]],
+      published: [false],
+    });
   }
-
 
   save() {
-    this.userService.createUser(this.user).subscribe(res => {
-      this.router.navigate(['users'])
-      alert("Usuário criado")
-    })
-
+    if (this.userForm.valid) {
+      const user: User = this.userForm.value;
+      this.userService.createUser(user).subscribe((res) => {
+        this.router.navigate(['users']);
+        alert('Usuário criado');
+      });
+    } else {
+     alert('Insira os campos corretamente!')
+    }
   }
 }
