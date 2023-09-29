@@ -1,5 +1,4 @@
 import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
 import { RouterModule, Routes } from "@angular/router";
 import { UsersComponent } from "./users/users.component";
 import {CreateUserComponent} from "./users/create-user/create-user.component";

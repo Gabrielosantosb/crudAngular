@@ -2,7 +2,6 @@ import {Component, OnDestroy, OnInit} from '@angular/core';
 import {UsersService} from './users.service';
 import { User} from './users.model';
 import {Subscription} from "rxjs";
-import { Location } from '@angular/common';
 
 @Component({
   selector: 'app-users',
