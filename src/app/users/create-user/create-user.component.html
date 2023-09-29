@@ -9,11 +9,13 @@
     </div>
   </label>
   <label class="form-label">Descrição:
-    <input class="form-input" placeholder="Insira a profissão" formControlName="description">
+    <input class="form-input" placeholder="Insira uma descrição" formControlName="description">
     <div *ngIf="userForm.get('description')?.invalid && userForm.get('description')?.touched">
       <p class="custom-p" *ngIf="userForm.get('description')?.hasError('required')">Descrição é obrigatória.</p>
-      <p class="custom-p" *ngIf="userForm.get('description')?.hasError('minlength')">Descrição deve ter pelo menos 3 caracteres.</p>
+      <p class="custom-p" *ngIf="userForm.get('description')?.hasError('minlength')">Descrição deve ter pelo menos 3
+        caracteres.</p>
     </div>
   </label>
-  <button class="form-button" type="submit">Gravar</button>
+  <button type="submit" [disabled]="!userForm.valid">Gravar</button>
+
 </form>

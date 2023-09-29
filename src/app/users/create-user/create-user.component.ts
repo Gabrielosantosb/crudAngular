@@ -1,10 +1,8 @@
-import {Component, OnInit} from '@angular/core';
-import { User} from "../users.model";
+import {Component} from '@angular/core';
+import {User} from "../users.model";
 import {UsersService} from "../users.service";
-import {Observable} from "rxjs";
-import {HttpClient} from "@angular/common/http";
-import {Router} from "@angular/router";
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-create-user',
@@ -17,7 +15,6 @@ export class CreateUserComponent {
   constructor(
     private userService: UsersService,
     private fb: FormBuilder,
-    private http: HttpClient,
     private router: Router
   ) {
     this.userForm = this.fb.group({
@@ -31,11 +28,12 @@ export class CreateUserComponent {
     if (this.userForm.valid) {
       const user: User = this.userForm.value;
       this.userService.createUser(user).subscribe((res) => {
-        this.router.navigate(['users']);
-        alert('Usuário criado');
+        this.router.navigate(['users'])
+        alert('Usuario Criado!')
+
       });
     } else {
-     alert('Insira os campos corretamente!')
+      alert('Formulário inválido')
     }
   }
 }

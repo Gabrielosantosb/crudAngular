@@ -7,7 +7,7 @@ import {UpdateComponent} from "./users/update/update.component";
 import {DeleteComponent} from "./users/delete/delete.component";
 
 const routes: Routes = [
-  { path: 'users', component: UsersComponent },
+  { path: 'users', component: UsersComponent, },
   { path: 'users/create', component: CreateUserComponent },
   { path: 'users/update/:id', component: UpdateComponent },
   { path: 'users/delete/:id', component: DeleteComponent }
