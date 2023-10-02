@@ -1,12 +1,18 @@
-<div>
-  <form class="form-container">
-    <label class="form-label">Nome:
-      <input class="form-input" placeholder="Insira o nome" [(ngModel)]="user.name" [ngModelOptions]="{ standalone: true }">
-    </label>
-    <label class="form-label">Descrição:
-      <input class="form-input" placeholder="Insira a profissão" [(ngModel)]="user.description" [ngModelOptions]="{ standalone: true }">
-    </label>
+<form class="form-container" [formGroup]="userForm" (ngSubmit)="update()">
+  <label class="form-label">Nome:
+    <input class="form-input" placeholder="Insira o nome" formControlName="name">
+    <div *ngIf="userForm.get('name')?.invalid && userForm.get('name')?.touched">
+      <p class="custom-p" *ngIf="userForm.get('name')?.hasError('required')">Nome obrigatório!</p>
+      <p class="custom-p" *ngIf="userForm.get('name')?.hasError('minlength')">O nome deve ter mais de 3 caracteres</p>
+    </div>
+  </label>
+  <label class="form-label">Descrição:
+    <input class="form-input" placeholder="Insira a profissão" formControlName="description">
+    <div *ngIf="userForm.get('description')?.invalid && userForm.get('description')?.touched">
+      <p class="custom-p" *ngIf="userForm.get('description')?.hasError('required')">Descrição obrigatória!</p>
+      <p class="custom-p" *ngIf="userForm.get('description')?.hasError('minlength')">A descrição deve ter mais de 3 caracteres</p>
+    </div>
+  </label>
 
-    <button class="form-button" (click)="update()">Atualizar</button>
-  </form>
-</div>
+  <button [disabled]="!userForm.valid">Atualizar</button>
+</form>

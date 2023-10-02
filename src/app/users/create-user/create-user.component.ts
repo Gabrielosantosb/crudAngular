@@ -28,7 +28,7 @@ export class CreateUserComponent {
     if (this.userForm.valid) {
       const user: User = this.userForm.value;
       this.userService.createUser(user).subscribe((res) => {
-        this.router.navigate(['users'])
+        // this.router.navigate(['users'])
         alert('Usuario Criado!')
 
       });
