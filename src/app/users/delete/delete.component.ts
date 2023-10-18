@@ -15,9 +15,9 @@ export class DeleteComponent implements OnInit {
   name: string = '';
   user: User = {
     id:'',
-    name: '',
-    description: '',
-    published: false
+    first_name: '',
+    last_name: '',
+    description: ''
   }
 
   constructor(private userService: UsersService, private route: ActivatedRoute, private _route :Router) {

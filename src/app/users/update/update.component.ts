@@ -14,9 +14,10 @@ export class UpdateComponent implements OnInit {
   id: string = this.route.snapshot.paramMap.get('id') ?? '';
   user: User = {
     id: '',
-    name: '',
+    first_name: '',
+    last_name: '',
     description: '',
-    published: false
+
   };
 
   constructor(private userService: UsersService,
@@ -25,9 +26,9 @@ export class UpdateComponent implements OnInit {
               private fb: FormBuilder
   ) {
     this.userForm = this.fb.group({
-      name: ['', [Validators.required, Validators.minLength(3)]],
+      first_name: ['', [Validators.required, Validators.minLength(3)]],
       description: ['', [Validators.required, Validators.minLength(3)]],
-      published: [false],
+
     });
   }
 
@@ -45,9 +46,10 @@ export class UpdateComponent implements OnInit {
     this.userService.getUser(this.id).subscribe(res => {
       this.user = {
         id: this.id,
-        name: res.name || '',
+        first_name: res.first_name || '',
+        last_name: res.last_name || '',
         description: res.description || '',
-        published: true
+
       };
       // Preencha o formulário com os valores do usuário
       this.userForm.patchValue(this.user);
