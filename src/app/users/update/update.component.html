@@ -1,6 +1,6 @@
-<form class="form-container" [formGroup]="userForm" (ngSubmit)="update()">
+<form class="form-container"(ngSubmit)="update()">
   <label class="form-label">Nome:
-    <input class="form-input" placeholder="Insira o nome" formControlName="firstName">
+    <input class="form-input" placeholder="Insira o nome" [(ngModel)]="user.firstName" [ngModelOptions]="{ standalone: true }">
     <div *ngIf="userForm.get('firstName')?.invalid && userForm.get('firstName')?.touched">
       <p class="custom-p" *ngIf="userForm.get('firstName')?.hasError('required')">Nome obrigatório!</p>
       <p class="custom-p" *ngIf="userForm.get('firstName')?.hasError('minlength')">O nome deve ter mais de 3 caracteres</p>
@@ -8,7 +8,7 @@
   </label>
 
   <label class="form-label">Nome:
-    <input class="form-input" placeholder="Insira o nome" formControlName="lastName">
+    <input class="form-input" placeholder="Insira a sobrenome" [(ngModel)]="user.lastName" [ngModelOptions]="{ standalone: true }">
     <div *ngIf="userForm.get('lastName')?.invalid && userForm.get('lastName')?.touched">
       <p class="custom-p" *ngIf="userForm.get('lastName')?.hasError('required')">Sobrenome obrigatório!</p>
       <p class="custom-p" *ngIf="userForm.get('lastName')?.hasError('minlength')">O Sobrenome deve ter mais de 3 caracteres</p>
@@ -16,7 +16,7 @@
   </label>
 
   <label class="form-label">Descrição:
-    <input class="form-input" placeholder="Insira a profissão" formControlName="description">
+    <input class="form-input" placeholder="Insira a sobrenome" [(ngModel)]="user.description" [ngModelOptions]="{ standalone: true }">
     <div *ngIf="userForm.get('description')?.invalid && userForm.get('description')?.touched">
       <p class="custom-p" *ngIf="userForm.get('description')?.hasError('required')">Descrição obrigatória!</p>
       <p class="custom-p" *ngIf="userForm.get('description')?.hasError('minlength')">A descrição deve ter mais de 3 caracteres</p>
@@ -25,3 +25,4 @@
 
   <button [disabled]="!userForm.valid">Atualizar</button>
 </form>
+
