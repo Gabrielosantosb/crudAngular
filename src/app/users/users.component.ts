@@ -27,6 +27,7 @@ export class UsersComponent implements OnInit, OnDestroy {
     this.userSub = this._user$.subscribe((res: User[])=>{
       console.log('Res:', res)
       this.data = res;
+      console.log(this.data)
     });
     }
     catch (e) {

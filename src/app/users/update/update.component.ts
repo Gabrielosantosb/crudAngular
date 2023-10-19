@@ -14,8 +14,8 @@ export class UpdateComponent implements OnInit {
   id: string = this.route.snapshot.paramMap.get('id') ?? '';
   user: User = {
     id: '',
-    first_name: '',
-    last_name: '',
+    firstName: '',
+    lastName: '',
     description: '',
 
   };
@@ -26,7 +26,8 @@ export class UpdateComponent implements OnInit {
               private fb: FormBuilder
   ) {
     this.userForm = this.fb.group({
-      first_name: ['', [Validators.required, Validators.minLength(3)]],
+      firstName: ['', [Validators.required, Validators.minLength(3)]],
+      lastName: ['', [Validators.required, Validators.minLength(3)]],
       description: ['', [Validators.required, Validators.minLength(3)]],
 
     });
@@ -35,6 +36,7 @@ export class UpdateComponent implements OnInit {
   update() {
     if (this.userForm.valid) {
       this.userService.updateUser(this.id, this.user).subscribe(res => {
+        console.log(res)
         alert('Usuário atualizado')
       });
     } else {
@@ -43,11 +45,13 @@ export class UpdateComponent implements OnInit {
   }
 
   ngOnInit() {
+
     this.userService.getUser(this.id).subscribe(res => {
+    console.log("Aqui" + res.lastName)
       this.user = {
         id: this.id,
-        first_name: res.first_name || '',
-        last_name: res.last_name || '',
+        firstName: res.firstName || '',
+        lastName: res.lastName || '',
         description: res.description || '',
 
       };

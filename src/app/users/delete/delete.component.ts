@@ -15,8 +15,8 @@ export class DeleteComponent implements OnInit {
   name: string = '';
   user: User = {
     id:'',
-    first_name: '',
-    last_name: '',
+    firstName: '',
+    lastName: '',
     description: ''
   }
 

@@ -2,12 +2,22 @@
 
 <form class="form-container" [formGroup]="userForm" (ngSubmit)="save()">
   <label class="form-label">Nome:
-    <input class="form-input" placeholder="Insira o nome" formControlName="name">
-    <div *ngIf="userForm.get('name')?.invalid && userForm.get('name')?.touched">
-      <p class="custom-p" *ngIf="userForm.get('name')?.hasError('required')">Nome é obrigatório.</p>
-      <p class="custom-p" *ngIf="userForm.get('name')?.hasError('minlength')">Nome deve ter pelo menos 3 caracteres.</p>
+    <input class="form-input" placeholder="Insira o nome" formControlName="firstName">
+    <div *ngIf="userForm.get('firstName')?.invalid && userForm.get('firstName')?.touched">
+      <p class="custom-p" *ngIf="userForm.get('firstName')?.hasError('required')">Nome é obrigatório.</p>
+      <p class="custom-p" *ngIf="userForm.get('firstName')?.hasError('minlength')">Nome deve ter pelo menos 3 caracteres.</p>
     </div>
   </label>
+
+  <label class="form-label">Sobrenome:
+    <input class="form-input" placeholder="Insira o sobrenome" formControlName="lastName">
+    <div *ngIf="userForm.get('lastName')?.invalid && userForm.get('lastName')?.touched">
+      <p class="custom-p" *ngIf="userForm.get('lastName')?.hasError('required')">Sobrenome é obrigatório.</p>
+      <p class="custom-p" *ngIf="userForm.get('lastName')?.hasError('minlength')">Sobrenome deve ter pelo menos 3 caracteres.</p>
+    </div>
+  </label>
+
+
   <label class="form-label">Descrição:
     <input class="form-input" placeholder="Insira uma descrição" formControlName="description">
     <div *ngIf="userForm.get('description')?.invalid && userForm.get('description')?.touched">

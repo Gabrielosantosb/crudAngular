@@ -3,6 +3,7 @@
   <thead>
   <tr>
     <th>Nome</th>
+    <th>Sobrenome</th>
     <th>Descrição</th>
     <th>Ações</th>
   </tr>
@@ -13,8 +14,8 @@
 
   </ng-container>
   <tr *ngFor="let user of data">
-    <td>{{user.first_name}}</td>
-    <td>{{user.last_name}}</td>
+    <td>{{user.firstName}}</td>
+    <td>{{user.lastName}}</td>
     <td>{{user.description}}</td>
     <td>
       <a routerLink="/users/update/{{user.id}}">EDITAR</a> ||

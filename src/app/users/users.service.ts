@@ -9,12 +9,13 @@ import {HttpClient} from "@angular/common/http";
 export class UsersService {
   // private url = "http://localhost:8080/api/tutorials"
   private url = "https://localhost:5001/api/person"
+
   constructor(private http: HttpClient) {
   }
 
   getUsers(): Observable<User[]> {
     return this.http.get<User[]>(this.url).pipe(
-      catchError(err =>{
+      catchError(err => {
         alert("Falha ao conectar servidor")
         return of([])
       })
@@ -45,11 +46,8 @@ export class UsersService {
   updateUser(id: string, request: User): Observable<User> {
     console.log('Chamou o método updateUser()');
     const _url = `${this.url}/${id}`
-    return this.http.put<User>(_url, request).pipe(tap(
-      res => {
-        console.log('Resposta PUT: ', res)
-      }
-    ));
+    return this.http.put<User>(_url, request)
+      ;
   }
 
   deleteAllUsers(): Observable<User[]> {
