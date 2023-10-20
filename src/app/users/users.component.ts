@@ -19,7 +19,7 @@ export class UsersComponent implements OnInit, OnDestroy {
   deleteAll(){
     this.userService.deleteAllUsers().subscribe()
     location.reload()
-    alert('Usuários deletados')
+    alert('Todos os usuários foram deletados')
 
   }
   ngOnInit() {

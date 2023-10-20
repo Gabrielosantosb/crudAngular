@@ -12,7 +12,7 @@ export class DeleteComponent implements OnInit {
 
 
   id: string =  this.route.snapshot.paramMap.get('id') ?? '';
-  name: string = '';
+  firstName: string = '';
   user: User = {
     id:'',
     firstName: '',

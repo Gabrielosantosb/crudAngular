@@ -7,7 +7,7 @@
     </div>
   </label>
 
-  <label class="form-label">Nome:
+  <label class="form-label">Sobrenome:
     <input class="form-input" placeholder="Insira a sobrenome" [(ngModel)]="user.lastName" [ngModelOptions]="{ standalone: true }">
     <div *ngIf="userForm.get('lastName')?.invalid && userForm.get('lastName')?.touched">
       <p class="custom-p" *ngIf="userForm.get('lastName')?.hasError('required')">Sobrenome obrigatório!</p>

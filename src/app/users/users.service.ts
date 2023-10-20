@@ -51,12 +51,8 @@ export class UsersService {
   }
 
   deleteAllUsers(): Observable<User[]> {
-    return this.http.delete<User[]>(this.url).pipe(catchError(
-      err => {
-        alert("Falha ao conectar ao servidor")
-        return of()
-      }
-    ))
+    const _url = `${this.url}/all`
+    return this.http.delete<User[]>(_url)
   }
 
   deleteUser(id: string): Observable<User> {

@@ -38,6 +38,8 @@ export class UpdateComponent implements OnInit {
       this.userService.updateUser(this.id, this.user).subscribe(res => {
         console.log(res)
         alert('Usuário atualizado')
+        this.router.navigate(['users'])
+
       });
     } else {
       alert('Por favor, preencha os campos corretamente.');
