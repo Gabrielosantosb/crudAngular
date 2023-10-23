@@ -49,7 +49,7 @@ export class UpdateComponent implements OnInit {
   ngOnInit() {
 
     this.userService.getUser(this.id).subscribe(res => {
-    console.log("Aqui" + res.lastName)
+
       this.user = {
         id: this.id,
         firstName: res.firstName || '',
